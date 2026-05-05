@@ -1,0 +1,39 @@
+{
+  "name": "AS Cloud System Bot",
+  "description": "Telegram file storage bot — store any file and retrieve it with a 10-character code.",
+  "repository": "https://github.com/your-username/as-cloud-bot",
+  "logo": "https://i.imgur.com/placeholder.png",
+  "keywords": ["telegram", "bot", "storage", "python"],
+  "stack": "heroku-22",
+
+  "env": {
+    "BOT_TOKEN": {
+      "description": "Your Telegram bot token from @BotFather (e.g. 123456:ABC-DEF...)",
+      "required": true
+    },
+    "CHANNEL_ID": {
+      "description": "Numerical Chat ID of your storage channel where bot is admin (e.g. -1001234567890). Must be the full numerical ID, NOT @handle.",
+      "required": true
+    }
+  },
+
+  "addons": [
+    {
+      "plan": "heroku-postgresql:essential-0",
+      "as": "DATABASE"
+    }
+  ],
+
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  },
+
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
